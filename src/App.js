@@ -1,24 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
 
 function App() {
+  const posts = [
+    {
+      id: 1,
+      texto: 'Olha a picanha!',
+      tempo: '1 minuto atrás',
+      autor: {
+        usuario: 'haniellohn',
+        nomeReal: 'Haniel Lohn'
+      },
+    },
+    {
+      id: 2,
+      texto: 'Ta chegando o fim de semana',
+      tempo: '2 minuto atrás',
+      autor: {
+        usuario: 'haniellohn',
+        nomeReal: 'Haniel Lohn'
+      },
+    },
+    {
+      id: 3,
+      texto: 'Testando',
+      tempo: '5 minuto atrás',
+      autor: {
+        usuario: 'haniellohn',
+        nomeReal: 'Haniel Lohn'
+      },
+    }
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+    <>
+      <h1>Blog do Manseirismo</h1>
+
+
+      {posts.length === 0 ?
+        <p>Nenhuma postagem foi realizada ainda</p>
+        :
+        posts.map(post => {
+          return (
+            <p>
+              {post.autor.usuario} - {post.tempo}
+              <br/>
+              {post.texto}
+            </p>
+
+          );
+      })}
+
+    
+    </>
+
+
+
   );
 }
 
