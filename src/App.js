@@ -1,61 +1,60 @@
+import { Container, Stack } from "react-bootstrap";
+import Cabecalho from "./componentes/Cabecalho";
+import BarraLateral from "./componentes/BarraLateral";
 
-function App() {
+
+export default function App() {
   const posts = [
     {
       id: 1,
-      texto: 'Olha a picanha!',
-      tempo: '1 minuto atrás',
+      texto: "Olá mundo!",
+      tempo: "1 minuto atrás",
       autor: {
-        usuario: 'haniellohn',
-        nomeReal: 'Haniel Lohn'
+        usuario: "Paulo",
+        apelido: "Penadinho",
       },
     },
     {
       id: 2,
-      texto: 'Ta chegando o fim de semana',
-      tempo: '2 minuto atrás',
+      texto: "Salve galera!",
+      tempo: "2 minutos atrás",
       autor: {
-        usuario: 'haniellohn',
-        nomeReal: 'Haniel Lohn'
-      },
-    },
-    {
-      id: 3,
-      texto: 'Testando',
-      tempo: '5 minuto atrás',
-      autor: {
-        usuario: 'haniellohn',
-        nomeReal: 'Haniel Lohn'
+        usuario: "Xunda",
+        apelido: "Legalzão",
       },
     }
   ];
 
+
   return (
-    
-    <>
-      <h1>Blog do Manseirismo</h1>
+    <Container>
+      <Cabecalho />
+
+      <Container>
 
 
-      {posts.length === 0 ?
-        <p>Nenhuma postagem foi realizada ainda</p>
-        :
-        posts.map(post => {
-          return (
-            <p>
-              {post.autor.usuario} - {post.tempo}
-              <br/>
-              {post.texto}
-            </p>
+        <Stack direction="horizontal">
+          <BarraLateral />
 
-          );
-      })}
+          <Container>
+            {posts.length === 0 ?
+              <p>Nenhuma postagem foi feita até o momento</p>
+              :
+              posts.map(post => {
+                return (
+                  <p key={post.id}>
+                    <b>{post.autor.usuario}</b> - {post.tempo}
+                    <br />
+                    {post.texto}
+                  </p>
+                );
+              })
+            }
 
-    
-    </>
+          </Container>
 
-
-
+        </Stack>
+      </Container>
+    </Container>
   );
 }
-
-export default App;
