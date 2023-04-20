@@ -19,7 +19,7 @@ export default function App() {
       texto: "Salve galera!",
       tempo: "2 minutos atrás",
       autor: {
-        usuario: "Xunda",
+        usuario: "Daniel",
         apelido: "Legalzão",
       },
     }
