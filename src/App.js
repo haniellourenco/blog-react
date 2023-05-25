@@ -1,60 +1,30 @@
-import { Container, Stack } from "react-bootstrap";
+import { Container  } from "react-bootstrap";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Cabecalho from "./componentes/Cabecalho";
-import BarraLateral from "./componentes/BarraLateral";
-
+import Corpo from "./componentes/Corpo";
+import Posts from "./componentes/Posts";
+import Feed from "./paginas/Feed";
+import Login from "./paginas/Login";
+import Busca from "./paginas/Busca";
 
 export default function App() {
-  const posts = [
-    {
-      id: 1,
-      texto: "Olá mundo!",
-      tempo: "1 minuto atrás",
-      autor: {
-        usuario: "Paulo",
-        apelido: "Penadinho",
-      },
-    },
-    {
-      id: 2,
-      texto: "Salve galera!",
-      tempo: "2 minutos atrás",
-      autor: {
-        usuario: "Daniel",
-        apelido: "Legalzão",
-      },
-    }
-  ];
 
 
   return (
-    <Container>
-      <Cabecalho />
+    <Container fluid className="App">
 
-      <Container>
+      <BrowserRouter>
+        <Cabecalho/>
 
+        <Routes>
+          <Route path='/' element={<Feed/>}/>
+          <Route path='/busca' element={<Busca/>} />
+          <Route path='/login' element={<Login/>} />
+          <Route path='/perfil' element={<Feed/>} />
+          <Route path='*' element={<Navigate to='/'/>} />
+        </Routes>
+      </BrowserRouter>
 
-        <Stack direction="horizontal">
-          <BarraLateral />
-
-          <Container>
-            {posts.length === 0 ?
-              <p>Nenhuma postagem foi feita até o momento</p>
-              :
-              posts.map(post => {
-                return (
-                  <p key={post.id}>
-                    <b>{post.autor.usuario}</b> - {post.tempo}
-                    <br />
-                    {post.texto}
-                  </p>
-                );
-              })
-            }
-
-          </Container>
-
-        </Stack>
-      </Container>
     </Container>
   );
 }

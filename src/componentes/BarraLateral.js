@@ -13,7 +13,11 @@ export default function BarraLateral() {
             </Nav.Item>
 
             <Nav.Item>
-                <Nav.Link href="/pesquisa">Buscar</Nav.Link>
+                <Nav.Link href="/busca">Buscar</Nav.Link>
+            </Nav.Item>
+            
+            <Nav.Item>
+                <Nav.Link href="/login">Login</Nav.Link>
             </Nav.Item>
             
         </Navbar>
